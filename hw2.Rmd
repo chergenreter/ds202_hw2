@@ -1,0 +1,80 @@
+---
+title: 'Homework #2'
+author: "Connor Hergenreter"
+date: "January 26, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##R commands
+
+Question 1.
+
+```{r}
+cel <- (c(15, -10) - 32) * (5/9)
+cel
+```
+
+Question 2.
+
+```{r}
+vec200 <- rep(c(1, 0), 100)
+vec200
+```
+
+Question 3.
+
+```{r}
+perfSquareNum <- 1
+numPerfect <- 0
+while (perfSquareNum <= 1001) {
+  if ((perfSquareNum * perfSquareNum)   <=1001) {
+    numPerfect <- (numPerfect + 1)
+  }
+  perfSquareNum <- (perfSquareNum + 1)
+}
+numPerfect
+```
+
+##Cars and mileage
+
+Question 1.
+
+```{r}
+library(ggplot2)
+top3 <- head(mpg[order(-mpg$hwy),], n = 3)
+top3
+```
+
+What are the top three cars by highway milage using the dataframe provided by ggplot? The answer for this question can be obtained by ordering the set by descending highway milage. The top three entries can be taken by using head(). By printing the top3 value we can see the jetta, new beetle, and new beetle as the top three.
+
+Question 2.
+
+```{r}
+numCompact <- length(unique(mpg[["model"]]))
+numCompact
+```
+
+The question is to find the count of unique models in the mpg set. Simply take the length of unique values in the model column from the mpg dataframe. The answer to this question is 38.
+
+Question 3.
+
+```{r}
+ggplot(mpg, aes(x=hwy, y=cty)) + geom_point()
+```
+
+Why are there so few points on this plot compared to all the entries in the mpg dataframe? All the points are contained in this graph. The reason all cannot be seen is that they are being plotted over eachother. Many points are placed in the same location.
+
+Quesion 4.
+
+```{r}
+mpg1999 <- mpg[which(mpg$year == 1999),]
+ggplot(mpg1999, aes(x=hwy, y=cty)) + geom_point()
+mpg2008 <- mpg[which(mpg$year == 2008),]
+ggplot(mpg2008, aes(x=hwy, y=cty)) + geom_point()
+```
+
+The first graph is 1999 and the second is 2008. As time went on cars got slightly more fuel efficient. Points shifted their concentration up and right on the graph in 2008. There are fewer points on the bottom left side of the 2008 graph too.
